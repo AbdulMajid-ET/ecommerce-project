@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Baggy Denim Jeans",
+      "price": 1499,
+      "category": "Jeans",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTw9hnjZUeX2RGRZdDfeEAoBlz_2EL05glvwEikBqWlITj04cNwCgotApIQf5bfyIt2WYO7Ylfdb_Y12QkfPR7sIT-Wr4mrC4XJZjGqtAPf3KluAz2n7jo1_g",
+      "stock": 15,
+      "description": "Relaxed fit denim jeans with a modern baggy style."
+    },
+    {
+      "id": "2",
+      "title": "Classic Blue Hoodie",
+      "price": 1299,
+      "category": "Hoodies",
+      "thumbnail": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQoe_Plb3xD2WrUIY4cKmI1c5W9pF6WdRCRWlSavLh0a1EZlFD3J9aXoTKWxjgnZX0JSKRiIL57EvEqf_B94eMFnmQnObQtpA",
+      "stock": 15,
+      "description": "A comfortable classic black hoodie with a relaxed fit, perfect for everyday wear."
+    },
+    {
+      "id": "3",
+      "title": "Classic Straight Fit Jeans",
+      "price": 1599,
+      "category": "Jeans",
+      "thumbnail": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQLyhe6yHbJ1Y-uSu2TQpCxz9f-FoiOcbsuuwzMfyXQSiGzTTJoVmfVn4WDOWe9dHOeOxLD0VHjEF60WTpMwN3RkNhFYswBcshbz3A_g6vV",
+      "stock": 20,
+      "description": "Classic straight fit jeans designed for a comfortable and timeless everyday look."
+    }
+  ],
+  "users": [
+    {
+      "fullName": "Majidxx",
+      "email": "majidxxmajjixx@gmail.com",
+      "password": "12345678*",
+      "id": "aydKhSzM8LY"
+    }
+  ],
+  "orders": [
+    {
+      "userId": "aydKhSzM8LY",
+      "items": [
+        {
+          "id": "2",
+          "title": "Classic Blue Hoodie",
+          "price": 1299,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 1299,
+      "status": "placed",
+      "createdAt": "2026-08-31T16:31:26.715Z",
+      "id": "u9pHKOBunic"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

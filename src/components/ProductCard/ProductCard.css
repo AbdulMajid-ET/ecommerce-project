@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Main Card Wrapper */
+.product-card {
+  position: relative;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px; /* Slightly smaller border radius */
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Wishlist Button */
+.wishlist-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.wishlist-button:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+/* Resized Image Frame - Uses fixed ratio with smaller max height constraint */
+.product-image-container {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* More standard, slightly shorter card proportion */
+  max-height: 260px;   /* Controls overall vertical height */
+  background-color: #f8f8f8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.03);
+}
+
+/* Compact Info Section */
+.product-info {
+  padding: 0.85rem 0.85rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #888888;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.product-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.35rem; /* Reduced font size for cleaner proportion */
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: #111111;
+  margin: 0 0 0.6rem 0;
+  text-transform: uppercase;
+  min-height: 2.7rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Price & Stock Row */
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+.stock {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stock.in-stock {
+  color: #2e7d32;
+}
+
+.stock.out-stock {
+  color: #d32f2f;
+}
+
+/* Action Link */
+.view-product {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #111111;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease;
+}
+
+.view-product:hover {
+  transform: translateX(3px);
+}

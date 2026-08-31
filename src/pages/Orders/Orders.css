@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+.orders-page {
+  min-height: calc(100vh - 120px);
+  background-color: #ffffff;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.orders-container {
+  width: 100%;
+  max-width: 750px;
+}
+
+.orders-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1.5px;
+  color: #000000;
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+}
+
+/* Orders List */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Individual Order Card */
+.order-card {
+  border: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  padding: 1.75rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #000000;
+  margin-bottom: 1.25rem;
+}
+
+.order-id {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #000000;
+  margin: 0 0 0.25rem 0;
+}
+
+.order-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+/* Status Badge */
+.status-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.35rem 0.75rem;
+  background-color: #000000;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Items Section */
+.order-items-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #888888;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+}
+
+.items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.item-qty {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #666666;
+  font-weight: 600;
+}
+
+/* Footer & Total */
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #eaeaea;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+.order-total-amount {
+  font-weight: bold;
+}
+
+/* Empty & Loading States */
+.center-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.state-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+.empty-msg {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.continue-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.continue-btn:hover {
+  background-color: #333333;
+}
+
+.error-message {
+  font-family: 'Inter', sans-serif;
+  color: #d9534f;
+  font-weight: 700;
+}

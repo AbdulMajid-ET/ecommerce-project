@@ -1,0 +1,80 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+
+import {
+  createOrder,
+  getOrders,
+} from "../../services/orderService"
+
+export const placeOrder = createAsyncThunk(
+  "orders/placeOrder",
+  async (orderData, thunkAPI) => {
+    try {
+      const response = await createOrder(orderData)
+
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const fetchOrders = createAsyncThunk(
+  "orders/fetchOrders",
+  async (userId, thunkAPI) => {
+    try {
+      const response = await getOrders(userId)
+
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+const initialState = {
+  orders: [],
+  loading: false,
+  error: null,
+}
+
+const orderSlice = createSlice({
+  name: "orders",
+  initialState,
+
+  reducers: {},
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(placeOrder.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+
+      .addCase(placeOrder.fulfilled, (state, action) => {
+        state.loading = false
+        state.orders.push(action.payload)
+      })
+
+      .addCase(placeOrder.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+
+      .addCase(fetchOrders.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+
+      .addCase(fetchOrders.fulfilled, (state, action) => {
+        state.loading = false
+        state.orders = action.payload
+      })
+
+      .addCase(fetchOrders.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+  },
+})
+
+export default orderSlice.reducer
