@@ -1,16 +1,85 @@
-# React + Vite
+# 🛍️ E-Commerce App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack-style fashion e-commerce application built with React, Redux Toolkit, React Router, Axios, and JSON Server.
 
-Currently, two official plugins are available:
+The project includes both a customer-facing shopping experience and a separate admin dashboard for managing products, users, and orders.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👤 User Side
 
-## Expanding the ESLint configuration
+- User registration and login
+- User authentication
+- Protected user routes
+- Product listing
+- Product details
+- Product category filtering
+- Product search
+- Shopping cart
+- Increase/decrease product quantity
+- Wishlist
+- Buy Now functionality
+- Checkout
+- Order placement
+- Order history
+- Stock management
+- Blocked-user handling
+- Responsive UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔐 Admin Side
+
+- Separate admin login
+- Protected admin routes
+- Admin authentication
+- Admin dashboard
+- Product management
+  - Add products
+  - Edit products
+  - Delete products
+  - View products
+  - Pagination
+- User management
+  - View users
+  - Block users
+  - Unblock users
+- Order management
+  - View orders
+  - View order details
+- Admin logout
+
+---
+
+## 🛠️ Technologies Used
+
+- React
+- Redux Toolkit
+- React Redux
+- React Router
+- Axios
+- Redux Persist
+- JSON Server
+- Vite
+- JavaScript
+- CSS
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+├── layouts/
+├── pages/
+├── redux/
+│   ├── slices/
+│   └── store.js
+├── routes/
+├── services/
+├── App.jsx
+└── main.jsx
+
+db.json

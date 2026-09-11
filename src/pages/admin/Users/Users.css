@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+.admin-users {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+
+.admin-users-header {
+  margin-bottom: 2rem;
+}
+
+.admin-users-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1.5px;
+  color: #000000;
+  margin: 0 0 0.25rem 0;
+  line-height: 1;
+}
+
+.admin-users-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #666666;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* User Count */
+
+.admin-users-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #666666;
+  margin-bottom: 1rem;
+}
+
+/* Table */
+
+.admin-users-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.admin-users-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.admin-users-table th {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666666;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.admin-users-table td {
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #000000;
+  border-bottom: 1px solid #eeeeee;
+  vertical-align: middle;
+}
+
+.admin-users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-users-table tbody tr:hover {
+  background-color: #ffffff;
+}
+
+/* User Name */
+
+.admin-user-name {
+  font-weight: 600;
+}
+
+/* Email */
+
+.admin-user-email {
+  color: #000000 !important;
+}
+
+/* Role */
+
+.admin-user-role {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Status */
+
+.admin-user-status {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.admin-user-status.active {
+  color: #000000;
+}
+
+.admin-user-status.blocked {
+  color: #666666;
+}
+
+/* Action */
+
+.admin-user-action {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-user-action.block {
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid #000000;
+}
+
+.admin-user-action.block:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.admin-user-action.unblock {
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.admin-user-action.unblock:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* Empty State */
+
+.admin-users-empty {
+  text-align: center !important;
+  padding: 3rem !important;
+  color: #666666 !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px;
+}
+
+/* Loading / Error */
+
+.admin-users-message,
+.admin-users-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-users-message {
+  color: #666666;
+}
+
+.admin-users-error {
+  color: #000000;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .admin-users-title {
+    font-size: 2.5rem;
+  }
+
+  .admin-users-table {
+    min-width: 650px;
+  }
+
+}

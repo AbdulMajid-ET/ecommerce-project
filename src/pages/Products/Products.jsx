@@ -1,59 +1,98 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useSearchParams } from "react-router-dom"
 
 import { fetchProducts } from "../../redux/slices/productSlice"
 import ProductCard from "../../components/ProductCard/ProductCard"
+import CustomSelect from "../../components/CustomSelect/CustomSelect"
 
 import "./Products.css"
 
 function Products() {
   const dispatch = useDispatch()
-  const searchInputRef = useRef(null)
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const { products, loading, error } = useSelector(
     (state) => state.products
   )
 
-  const [ searchTerm, setSearchTerm ] = useState("")
-  const [ isSearchOpen, setIsSearchOpen ] = useState(false)
-  const [ selectedCategory, setSelectedCategory ] = useState("all")
-  const [ sortOption, setSortOption ] = useState("default")
-  const [ currentPage, setCurrentPage ] = useState(1)
+  const searchTerm = searchParams.get("search") || ""
 
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [sortOption, setSortOption] = useState("default")
+  const [currentPage, setCurrentPage] = useState(1)
+
+  // Each page should show 8 products
   const productsPerPage = 8
+
+  // Category dropdown options
+  const categoryOptions = useMemo(() => {
+    const categories = [
+      ...new Set(
+        products.map((product) => product.category)
+      ),
+    ]
+
+    return [
+      {
+        value: "all",
+        label: "ALL CATEGORIES",
+      },
+      ...categories.map((category) => ({
+        value: category,
+        label: category.toUpperCase(),
+      })),
+    ]
+  }, [products])
+
+  // Sort dropdown options
+  const sortOptions = [
+    {
+      value: "default",
+      label: "DEFAULT",
+    },
+    {
+      value: "aToZ",
+      label: "ALPHABETICALLY, A-Z",
+    },
+    {
+      value: "zToA",
+      label: "ALPHABETICALLY, Z-A",
+    },
+    {
+      value: "lowToHigh",
+      label: "PRICE, LOW TO HIGH",
+    },
+    {
+      value: "highToLow",
+      label: "PRICE, HIGH TO LOW",
+    },
+  ]
 
   useEffect(() => {
     dispatch(fetchProducts())
-  }, [ dispatch ])
+  }, [dispatch])
 
-  useEffect(() => {
-    if (isSearchOpen) {
-      searchInputRef.current?.focus()
-    }
-  }, [ isSearchOpen ])
+  // Handle category filter
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value)
+    setCurrentPage(1)
 
-  const handleSearchToggle = () => {
-    setIsSearchOpen((prev) => !prev)
+    // Clear search when category changes
+    setSearchParams({})
   }
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value)
+  // Handle sorting
+  const handleSortChange = (value) => {
+    setSortOption(value)
     setCurrentPage(1)
   }
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value)
-    setCurrentPage(1)
-  }
-
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value)
-    setCurrentPage(1)
-  }
-
+  // Filter and sort products
   const filteredProducts = useMemo(() => {
     let result = [...products]
 
+    // Search filtering
     if (searchTerm.trim()) {
       const search = searchTerm.toLowerCase()
 
@@ -64,26 +103,42 @@ function Products() {
       )
     }
 
+    // Category filtering
     if (selectedCategory !== "all") {
       result = result.filter(
-        (product) => product.category === selectedCategory
+        (product) =>
+          product.category === selectedCategory
       )
     }
 
+    // Price: low to high
     if (sortOption === "lowToHigh") {
-      result.sort((a, b) => a.price - b.price)
+      result.sort(
+        (a, b) => a.price - b.price
+      )
     }
 
+    // Price: high to low
     if (sortOption === "highToLow") {
-      result.sort((a, b) => b.price - a.price)
+      result.sort(
+        (a, b) => b.price - a.price
+      )
     }
 
+    // Alphabetically: A-Z
     if (sortOption === "aToZ") {
-      result.sort((a, b) => a.title.localeCompare(b.title))
+      result.sort(
+        (a, b) =>
+          a.title.localeCompare(b.title)
+      )
     }
 
+    // Alphabetically: Z-A
     if (sortOption === "zToA") {
-      result.sort((a, b) => b.title.localeCompare(a.title))
+      result.sort(
+        (a, b) =>
+          b.title.localeCompare(a.title)
+      )
     }
 
     return result
@@ -94,18 +149,22 @@ function Products() {
     sortOption,
   ])
 
+  // Calculate total number of pages
   const totalPages = Math.ceil(
     filteredProducts.length / productsPerPage
   )
 
+  // Calculate starting product index
   const startIndex =
     (currentPage - 1) * productsPerPage
 
+  // Get products for current page
   const currentProducts = filteredProducts.slice(
     startIndex,
     startIndex + productsPerPage
   )
 
+  // Loading state
   if (loading) {
     return (
       <div className="products-loading">
@@ -114,6 +173,7 @@ function Products() {
     )
   }
 
+  // Error state
   if (error) {
     return (
       <div className="products-error">
@@ -124,128 +184,100 @@ function Products() {
 
   return (
     <main className="products-page">
+
+      {/* Page title */}
+
       <h1 className="products-page-title">
         PRODUCTS
       </h1>
 
-      <section className="products-toolbar">
-        <div className="toolbar-left">
-          <span className="toolbar-label">FILTER:</span>
+      {/* Filter and Sort Toolbar */}
 
-          <div className="filter-select-wrapper">
-            <select
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-              className="toolbar-select"
-            >
-              <option value="all">ALL CATEGORIES</option>
-              <option value="Jeans">JEANS</option>
-              <option value="Hoodies">HOODIES</option>
-            </select>
-          </div>
+      <section className="products-toolbar">
+
+        {/* Category Filter */}
+
+        <div className="toolbar-left">
+
+          <span className="toolbar-label">
+            FILTER:
+          </span>
+
+          <CustomSelect
+            value={selectedCategory}
+            options={categoryOptions}
+            onChange={handleCategoryChange}
+          />
+
         </div>
 
+        {/* Sort */}
+
         <div className="toolbar-right">
-          <div
-            className={`search-input-wrapper ${
-              isSearchOpen ? "open" : ""
-            }`}
-          >
-            <button
-              type="button"
-              className="search-icon-btn"
-              onClick={handleSearchToggle}
-              aria-label="Toggle Search"
-            >
-              <svg
-                className="search-icon-svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="8"
-                />
 
-                <line
-                  x1="21"
-                  y1="21"
-                  x2="16.65"
-                  y2="16.65"
-                />
-              </svg>
-            </button>
+          <span className="toolbar-label">
+            SORT BY:
+          </span>
 
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="SEARCH..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="toolbar-search-input"
-            />
-          </div>
-
-          <span className="toolbar-label">SORT BY:</span>
-
-          <div className="filter-select-wrapper">
-            <select
-              value={sortOption}
-              onChange={handleSortChange}
-              className="toolbar-select"
-            >
-              <option value="default">DEFAULT</option>
-              <option value="aToZ">
-                ALPHABETICALLY, A-Z
-              </option>
-              <option value="zToA">
-                ALPHABETICALLY, Z-A
-              </option>
-              <option value="lowToHigh">
-                PRICE, LOW TO HIGH
-              </option>
-              <option value="highToLow">
-                PRICE, HIGH TO LOW
-              </option>
-            </select>
-          </div>
+          <CustomSelect
+            value={sortOption}
+            options={sortOptions}
+            onChange={handleSortChange}
+          />
 
           <span className="products-count-label">
             {filteredProducts.length} PRODUCTS
           </span>
+
         </div>
+
       </section>
 
+      {/* Products */}
+
       {currentProducts.length === 0 ? (
+
         <div className="products-empty">
-          <h2>NO PRODUCTS FOUND</h2>
+
+          <h2>
+            NO PRODUCTS FOUND
+          </h2>
 
           <p>
             Try clearing your filters or search term.
           </p>
+
         </div>
+
       ) : (
+
         <section className="products-grid">
+
           {currentProducts.map((product) => (
+
             <ProductCard
               key={product.id}
               product={product}
             />
+
           ))}
+
         </section>
+
       )}
 
+      {/* Pagination */}
+
       {totalPages > 1 && (
+
         <div className="products-pagination">
+
           <button
             disabled={currentPage === 1}
             onClick={() =>
-              setCurrentPage((prev) => prev - 1)
+              setCurrentPage(
+                (prev) => prev - 1
+              )
             }
             className="pagination-arrow"
           >
@@ -256,28 +288,40 @@ function Products() {
             { length: totalPages },
             (_, index) => index + 1
           ).map((page) => (
+
             <button
               key={page}
-              className={`pagination-number ${
-                currentPage === page ? "active" : ""
-              }`}
-              onClick={() => setCurrentPage(page)}
+              className={`pagination-number ${currentPage === page
+                  ? "active"
+                  : ""
+                }`}
+              onClick={() =>
+                setCurrentPage(page)
+              }
             >
               {page}
             </button>
+
           ))}
 
           <button
-            disabled={currentPage === totalPages}
+            disabled={
+              currentPage === totalPages
+            }
             onClick={() =>
-              setCurrentPage((prev) => prev + 1)
+              setCurrentPage(
+                (prev) => prev + 1
+              )
             }
             className="pagination-arrow"
           >
             →
           </button>
+
         </div>
+
       )}
+
     </main>
   )
 }

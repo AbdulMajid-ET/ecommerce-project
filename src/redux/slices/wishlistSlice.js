@@ -16,6 +16,7 @@ const wishlistSlice = createSlice({
     addToWishlist: (state, action) => {
       const product = action.payload
 
+      // Check whether product already exists
       const exists = state.items.some(
         (item) => item.id === product.id
       )
@@ -29,7 +30,9 @@ const wishlistSlice = createSlice({
           state.userWishlists = {}
         }
 
-        state.userWishlists[state.activeUserId] = state.items
+        // Save wishlist for current user
+        state.userWishlists[state.activeUserId] =
+          state.items
       }
     },
 
@@ -43,7 +46,9 @@ const wishlistSlice = createSlice({
           state.userWishlists = {}
         }
 
-        state.userWishlists[state.activeUserId] = state.items
+        // Save updated wishlist for current user
+        state.userWishlists[state.activeUserId] =
+          state.items
       }
     },
 

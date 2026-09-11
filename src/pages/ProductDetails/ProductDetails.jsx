@@ -2,14 +2,23 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 
-import { addToCart } from "../../redux/slices/cartSlice"
+import { addToCart, setBuyNowItem } from "../../redux/slices/cartSlice"
 import { fetchProductById } from "../../redux/slices/productSlice"
+
+import CartNotification from "../../components/CartNotification/CartNotification"
+
+import { useNavigate } from "react-router-dom"
 
 import "./ProductDetails.css"
 
 function ProductDetails() {
   const { id } = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const isAuthenticated = useSelector(
+    (state) => state.auth.isAuthenticated
+  )
 
   const {
     selectedProduct,
@@ -17,8 +26,18 @@ function ProductDetails() {
     error,
   } = useSelector((state) => state.products)
 
+  const cartItems = useSelector(
+    (state) => state.cart?.items || []
+  )
+
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  )
+
   const [quantity, setQuantity] = useState(1)
   const [selectedSize, setSelectedSize] = useState("30")
+  const [showCartNotification, setShowCartNotification] = useState(false)
 
   useEffect(() => {
     dispatch(fetchProductById(id))
@@ -53,6 +72,12 @@ function ProductDetails() {
   const product = selectedProduct
   const isOutOfStock = product.stock <= 0
 
+  const isAlreadyInCart = cartItems.some(
+    (item) =>
+      item.id === product.id &&
+      item.size === selectedSize
+  )
+
   const handleIncrease = () => {
     if (quantity < product.stock) {
       setQuantity((prev) => prev + 1)
@@ -66,7 +91,12 @@ function ProductDetails() {
   }
 
   const handleAddToCart = () => {
-    if (isOutOfStock) return
+    if (!isAuthenticated) {
+      navigate("/login")
+      return
+    }
+
+    if (isOutOfStock || isAlreadyInCart) return
 
     dispatch(
       addToCart({
@@ -75,6 +105,27 @@ function ProductDetails() {
         size: selectedSize,
       })
     )
+
+    setShowCartNotification(true)
+  }
+
+  const handleBuyNow = () => {
+    if (!isAuthenticated) {
+      navigate("/login")
+      return
+    }
+
+    if (isOutOfStock) return
+
+    dispatch(
+      setBuyNowItem({
+        ...product,
+        quantity,
+        size: selectedSize,
+      })
+    )
+
+    navigate("/checkout")
   }
 
   const sizes = ["28", "30", "32", "34", "36"]
@@ -109,7 +160,13 @@ function ProductDetails() {
               RS. {product.price}
             </span>
 
-            <span className="sale-badge">SALE</span>
+            {product.originalPrice &&
+              product.originalPrice > product.price && (
+                <span className="sale-badge">
+                  SALE
+                </span>
+              )}
+
           </div>
 
           <p className="taxes-included">
@@ -124,9 +181,8 @@ function ProductDetails() {
                 <button
                   key={size}
                   type="button"
-                  className={`size-btn ${
-                    selectedSize === size ? "active" : ""
-                  }`}
+                  className={`size-btn ${selectedSize === size ? "active" : ""
+                    }`}
                   onClick={() => setSelectedSize(size)}
                 >
                   {size}
@@ -174,18 +230,21 @@ function ProductDetails() {
             <button
               type="button"
               className="btn-add-cart"
-              disabled={isOutOfStock}
+              disabled={isOutOfStock || isAlreadyInCart}
               onClick={handleAddToCart}
             >
               {isOutOfStock
                 ? "OUT OF STOCK"
-                : "ADD TO CART"}
+                : isAlreadyInCart
+                  ? "ADDED TO CART"
+                  : "ADD TO CART"}
             </button>
 
             <button
               type="button"
               className="btn-buy-now"
               disabled={isOutOfStock}
+              onClick={handleBuyNow}
             >
               BUY IT NOW
             </button>
@@ -196,8 +255,17 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+      {showCartNotification && (
+        <CartNotification
+          product={product}
+          selectedSize={selectedSize}
+          cartCount={cartCount}
+          onClose={() => setShowCartNotification(false)}
+        />
+      )}
     </div>
   )
+
 }
 
 export default ProductDetails

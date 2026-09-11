@@ -29,17 +29,13 @@ function Cart() {
   if (items.length === 0) {
     return (
       <div className="cart-page empty-cart-container">
-        <h1 className="cart-title">YOUR CART</h1>
-
-        <p className="empty-message">
-          Your cart is currently empty.
-        </p>
+        <h1>YOUR CART IS EMPTY</h1>
 
         <Link
           to="/products"
-          className="continue-shopping-link"
+          className="continue-shopping-btn"
         >
-          Continue shopping
+          CONTINUE SHOPPING
         </Link>
       </div>
     )

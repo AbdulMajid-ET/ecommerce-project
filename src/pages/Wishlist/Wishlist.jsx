@@ -45,7 +45,7 @@ function Wishlist() {
 
         <Link
           to="/products"
-          className="continue-shopping-link"
+          className="empty-wishlist-shopping-btn"
         >
           CONTINUE SHOPPING
         </Link>

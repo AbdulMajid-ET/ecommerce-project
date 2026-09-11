@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 import { placeOrder } from "../../redux/slices/orderSlice"
-import { clearCart } from "../../redux/slices/cartSlice"
+import { clearCart, clearBuyNowItem } from "../../redux/slices/cartSlice"
+
+import {
+  reduceProductStock
+} from "../../redux/slices/productSlice"
 
 import "./Checkout.css"
 
@@ -10,31 +14,42 @@ function Checkout() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const user = useSelector((state) => state.auth.user)
-  const cartItems = useSelector((state) => state.cart.items)
+  const user = useSelector(
+    (state) => state.auth.user
+  )
+
+  const cartItems = useSelector(
+    (state) => state.cart.items
+  )
+
+  const buyNowItem = useSelector(
+    (state) => state.cart.buyNowItem
+  )
+
+  const checkoutItems = buyNowItem
+    ? [buyNowItem]
+    : cartItems
 
   const { loading, error } = useSelector((state) => state.orders)
 
-  const total = cartItems.reduce(
-    (total, product) => total + product.price * product.quantity,
+  const total = checkoutItems.reduce(
+    (total, product) =>
+      total + product.price * product.quantity,
     0
   )
 
   const handlePlaceOrder = async () => {
-    if (!user?.id || cartItems.length === 0) {
-      return
-    }
+    if (!user?.id || checkoutItems.length === 0) return
 
     const orderData = {
       userId: user.id,
-
-      items: cartItems.map((product) => ({
+      items: checkoutItems.map((product) => ({
         id: product.id,
         title: product.title,
         price: product.price,
         quantity: product.quantity,
+        size: product.size,
       })),
-
       totalAmount: total,
       status: "placed",
       createdAt: new Date().toISOString(),
@@ -43,12 +58,31 @@ function Checkout() {
     const result = await dispatch(placeOrder(orderData))
 
     if (placeOrder.fulfilled.match(result)) {
-      dispatch(clearCart())
-      navigate("/orders")
+      try {
+        for (const item of checkoutItems) {
+          await dispatch(
+            reduceProductStock({
+              id: item.id,
+              quantity: item.quantity,
+            })
+          ).unwrap()
+        }
+
+        if (buyNowItem) {
+          dispatch(clearBuyNowItem())
+        } else {
+          dispatch(clearCart())
+        }
+
+        navigate("/orders")
+      } catch (error) {
+        console.error(error)
+        alert(error)
+      }
     }
   }
 
-  if (cartItems.length === 0) {
+  if (checkoutItems.length === 0) {
     return (
       <div className="checkout-page empty-checkout">
         <h1 className="checkout-title">CHECKOUT</h1>
@@ -74,7 +108,7 @@ function Checkout() {
             </h2>
 
             <div className="items-list">
-              {cartItems.map((product, index) => (
+              {checkoutItems.map((product, index) => (
                 <div
                   key={`${product.id}-${index}`}
                   className="summary-item"

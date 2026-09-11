@@ -1,0 +1,119 @@
+.custom-select {
+  position: relative;
+  display: inline-block;
+  min-width: 125px;
+  font-family: 'Oswald', sans-serif;
+  z-index: 50;
+}
+
+/* Main button */
+
+.custom-select-button {
+  min-width: 125px;
+  padding: 5px 4px 5px 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  border: none;
+  background: transparent;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  color: #000000;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+/* Small arrow */
+
+.custom-select-arrow {
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+
+  transition: transform 0.2s ease;
+}
+
+.custom-select-arrow-open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+
+.custom-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+
+  min-width: 155px;
+
+  background: #ffffff;
+  border: 1px solid #dddddd;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  padding: 5px 0;
+
+  z-index: 100;
+}
+
+/* Dropdown option */
+
+.custom-select-option {
+  width: 100%;
+
+  display: block;
+
+  padding: 9px 12px;
+
+  border: none;
+  background: transparent;
+
+  text-align: left;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+
+  color: #000000;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+/* Hover */
+
+.custom-select-option:hover {
+  background-color: #f3f3f3;
+}
+
+/* Selected option */
+
+.custom-select-option-active {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.custom-select-option-active:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Button hover */
+
+.custom-select-button:hover {
+  opacity: 0.65;
+}

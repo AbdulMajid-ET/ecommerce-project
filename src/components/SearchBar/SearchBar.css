@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.searchbar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* NAVBAR SEARCH ICON */
+.navbar-search-button {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-search-button:hover {
+  opacity: 0.6;
+}
+
+/* BACKDROP DIMMER */
+.searchbar-backdrop {
+  position: fixed;
+  top: 102px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1001;
+}
+
+/* SEARCH OVERLAY BAR */
+.searchbar-overlay {
+  position: fixed;
+  top: 27px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: #ffffff;
+  z-index: 1002;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* FORM WRAPPER (MATCHES FRIEND'S WIDE RECTANGLE) */
+.searchbar-form {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* INPUT BOX CONTAINER */
+.searchbar-input-container {
+  position: relative;
+  flex: 1;
+  height: 48px;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* FLOATING LABEL */
+.searchbar-label {
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  color: #000000;
+  pointer-events: none;
+}
+
+/* INPUT FIELD */
+.searchbar-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 14px 44px 2px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.searchbar-input::placeholder {
+  color: #888888;
+  font-size: 0.75rem;
+  text-transform: none;
+}
+
+/* SEARCH SUBMIT BUTTON */
+.searchbar-submit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.searchbar-submit:hover {
+  opacity: 0.6;
+}
+
+/* CLOSE "X" BUTTON */
+.searchbar-close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.searchbar-close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 1.2px;
+  background: #000000;
+}
+
+.searchbar-close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.searchbar-close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.searchbar-close:hover {
+  opacity: 0.6;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 768px) {
+  .searchbar-overlay {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .searchbar-form {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .searchbar-input-container {
+    height: 42px;
+  }
+}

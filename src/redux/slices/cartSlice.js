@@ -6,6 +6,7 @@ const initialState = {
   activeUserId: null,
   items: [],
   userCarts: {},
+  buyNowItem: null,
 }
 
 const cartSlice = createSlice({
@@ -22,21 +23,16 @@ const cartSlice = createSlice({
           item.size === product.size
       )
 
+      // If the same product with the same size
+      // is already in the cart, do not add it again.
       if (existingProduct) {
-        const newQuantity =
-          existingProduct.quantity +
-          (product.quantity || 1)
-
-        existingProduct.quantity = Math.min(
-          newQuantity,
-          existingProduct.stock
-        )
-      } else {
-        state.items.push({
-          ...product,
-          quantity: product.quantity || 1,
-        })
+        return
       }
+
+      state.items.push({
+        ...product,
+        quantity: product.quantity || 1,
+      })
 
       if (state.activeUserId) {
         if (!state.userCarts) {
@@ -122,6 +118,14 @@ const cartSlice = createSlice({
         state.userCarts[state.activeUserId] = []
       }
     },
+
+    setBuyNowItem: (state, action) => {
+      state.buyNowItem = action.payload
+    },
+
+    clearBuyNowItem: (state) => {
+      state.buyNowItem = null
+    },
   },
 
   extraReducers: (builder) => {
@@ -161,6 +165,8 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   clearCart,
+  setBuyNowItem,
+  clearBuyNowItem,
 } = cartSlice.actions
 
 export default cartSlice.reducer

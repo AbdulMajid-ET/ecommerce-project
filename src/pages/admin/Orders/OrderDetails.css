@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+
+/* =========================
+   PAGE
+========================= */
+
+.admin-order-details {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-order-details-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin-order-details-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1.5px;
+  color: #000000;
+  margin: 0 0 0.25rem 0;
+  line-height: 1;
+}
+
+.admin-order-details-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #666666;
+  margin: 0;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.admin-order-back-btn {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 0.65rem 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-order-back-btn:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+
+/* =========================
+   ORDER INFORMATION
+========================= */
+
+.admin-order-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  background-color: #ffffff;
+
+  border: 1px solid #e5e5e5;
+
+  margin-bottom: 2rem;
+}
+
+.admin-order-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1.5rem;
+
+  border-right: 1px solid #eeeeee;
+}
+
+.admin-order-info-item:last-child {
+  border-right: none;
+}
+
+.admin-order-info-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+.admin-order-info-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+
+/* =========================
+   ORDER ITEMS
+========================= */
+
+.admin-order-items {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+}
+
+.admin-order-items-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: #000000;
+
+  margin: 0;
+  padding: 1.5rem;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.admin-order-items-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 1.25rem 1.5rem;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.admin-order-item:last-child {
+  border-bottom: none;
+}
+
+.admin-order-item-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  margin: 0 0 0.4rem 0;
+}
+
+.admin-order-item-quantity {
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  color: #666666;
+
+  margin: 0;
+}
+
+.admin-order-item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+.admin-order-items-empty {
+  padding: 2rem 1.5rem;
+
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================
+   LOADING / ERROR
+========================= */
+
+.admin-order-details-message,
+.admin-order-details-error {
+  font-family: 'Inter', sans-serif;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-order-details-message {
+  color: #666666;
+}
+
+.admin-order-details-error {
+  color: #d00000;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .admin-order-details {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .admin-order-details-title {
+    font-size: 2.5rem;
+  }
+
+  .admin-order-details-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-order-back-btn {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .admin-order-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .admin-order-info-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .admin-order-info-item:nth-child(-n + 2) {
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .admin-order-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}

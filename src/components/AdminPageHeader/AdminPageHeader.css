@@ -1,0 +1,38 @@
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.admin-page-title {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.admin-page-subtitle {
+  margin: 6px 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+.admin-page-header-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .admin-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-page-header-action {
+    width: 100%;
+  }
+}

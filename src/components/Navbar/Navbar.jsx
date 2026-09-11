@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 
 import { logout } from "../../redux/slices/authSlice"
 import { clearCart } from "../../redux/slices/cartSlice"
-import { clearWishlist } from "../../redux/slices/wishlistSlice"
+
+import SearchBar from "../SearchBar/SearchBar"
 
 import "./Navbar.css"
 
@@ -11,7 +12,9 @@ function Navbar() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { isAuthenticated } = useSelector((state) => state.auth)
+  const { isAuthenticated } = useSelector(
+    (state) => state.auth
+  )
 
   const items = useSelector(
     (state) => state.cart?.items || []
@@ -26,9 +29,10 @@ function Navbar() {
     0
   )
 
+  const isWishlistActive = wishlistItems.length > 0
+
   const handleLogout = () => {
     dispatch(clearCart())
-    dispatch(clearWishlist())
     dispatch(logout())
     navigate("/")
   }
@@ -42,36 +46,60 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <div className="nav-left-group">
-            <Link to="/" className="navbar-logo">
+            <Link
+              to="/"
+              className="navbar-logo"
+            >
               FIND YOUR STYLE
             </Link>
 
             <div className="navbar-links">
-              <Link to="/" className="nav-link">
+              <Link
+                to="/"
+                className="nav-link"
+              >
                 HOME
               </Link>
 
-              <Link to="/products" className="nav-link">
+              <Link
+                to="/products"
+                className="nav-link"
+              >
                 CATALOG
               </Link>
 
-              <Link to="/about" className="nav-link">
+              <Link
+                to="/about"
+                className="nav-link"
+              >
                 ABOUT
               </Link>
             </div>
           </div>
 
           <div className="navbar-actions">
+
+            {/* Search */}
+            <SearchBar />
+
+            {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="icon-link"
+              className={`icon-link wishlist-icon-link ${isWishlistActive
+                  ? "navbar-wishlist-active"
+                  : ""
+                }`}
               aria-label="Wishlist"
             >
               <svg
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                fill="none"
+                fill={
+                  isWishlistActive
+                    ? "currentColor"
+                    : "none"
+                }
                 stroke="currentColor"
                 strokeWidth="1.75"
                 strokeLinecap="round"
@@ -87,6 +115,7 @@ function Navbar() {
               )}
             </Link>
 
+            {/* Cart */}
             <Link
               to="/cart"
               className="icon-link cart-icon-link"
@@ -114,6 +143,7 @@ function Navbar() {
               )}
             </Link>
 
+            {/* Authentication */}
             {isAuthenticated ? (
               <div className="user-menu">
                 <button
@@ -126,11 +156,17 @@ function Navbar() {
               </div>
             ) : (
               <div className="auth-links">
-                <Link to="/login" className="nav-link">
+                <Link
+                  to="/login"
+                  className="nav-link"
+                >
                   LOGIN
                 </Link>
 
-                <Link to="/register" className="nav-link">
+                <Link
+                  to="/register"
+                  className="nav-link"
+                >
                   REGISTER
                 </Link>
               </div>

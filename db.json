@@ -1,20 +1,20 @@
 {
   "products": [
     {
-      "id": "1",
       "title": "Baggy Denim Jeans",
       "price": 1499,
       "category": "Jeans",
-      "thumbnail": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTw9hnjZUeX2RGRZdDfeEAoBlz_2EL05glvwEikBqWlITj04cNwCgotApIQf5bfyIt2WYO7Ylfdb_Y12QkfPR7sIT-Wr4mrC4XJZjGqtAPf3KluAz2n7jo1_g",
-      "stock": 15,
-      "description": "Relaxed fit denim jeans with a modern baggy style."
+      "stock": 5,
+      "thumbnail": "https://baggyclothing.us/cdn/shop/files/BAGGYDENIM01-1901.png?v=1760090394&width=1600",
+      "description": "Relaxed fit denim jeans with a modern baggy style",
+      "id": "1"
     },
     {
       "id": "2",
       "title": "Classic Blue Hoodie",
       "price": 1299,
       "category": "Hoodies",
-      "thumbnail": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQoe_Plb3xD2WrUIY4cKmI1c5W9pF6WdRCRWlSavLh0a1EZlFD3J9aXoTKWxjgnZX0JSKRiIL57EvEqf_B94eMFnmQnObQtpA",
+      "thumbnail": "https://colorfulstandard.com/cdn/shop/files/CS1015_Organic-Oversized-Hood_Marine-Blue_Male_6.heic?v=1758724162&width=4000",
       "stock": 15,
       "description": "A comfortable classic black hoodie with a relaxed fit, perfect for everyday wear."
     },
@@ -23,20 +23,74 @@
       "title": "Classic Straight Fit Jeans",
       "price": 1599,
       "category": "Jeans",
-      "thumbnail": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQLyhe6yHbJ1Y-uSu2TQpCxz9f-FoiOcbsuuwzMfyXQSiGzTTJoVmfVn4WDOWe9dHOeOxLD0VHjEF60WTpMwN3RkNhFYswBcshbz3A_g6vV",
-      "stock": 20,
+      "thumbnail": "https://levi.in/cdn/shop/files/005013724_02_Front.jpg?v=1753249407",
+      "stock": 19,
       "description": "Classic straight fit jeans designed for a comfortable and timeless everyday look."
+    },
+    {
+      "title": "Classic Black Jacket",
+      "price": 1999,
+      "category": "Jackets",
+      "stock": 20,
+      "thumbnail": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80",
+      "description": "Classic black jacket with a clean and versatile design.",
+      "id": "5beVxobPR_8"
     }
   ],
   "users": [
     {
-      "fullName": "Majidxx",
-      "email": "majidxxmajjixx@gmail.com",
-      "password": "12345678*",
-      "id": "aydKhSzM8LY"
+      "fullName": "Demo Admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin",
+      "id": "admin-1"
+    },
+    {
+      "fullName": "Demo User",
+      "email": "user@example.com",
+      "password": "user123",
+      "role": "user",
+      "id": "aydKhSzM8LY",
+      "isBlocked": false
     }
   ],
   "orders": [
+    {
+      "userId": "aydKhSzM8LY",
+      "items": [
+        {
+          "id": "3",
+          "title": "Classic Straight Fit Jeans",
+          "price": 1599,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 1599,
+      "status": "placed",
+      "createdAt": "2026-09-07T06:18:58.420Z",
+      "id": "wIqvkhSKKHE"
+    },
+    {
+      "userId": "aydKhSzM8LY",
+      "items": [
+        {
+          "id": "3",
+          "title": "Classic Straight Fit Jeans",
+          "price": 1599,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "Classic Blue Hoodie",
+          "price": 1299,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 2898,
+      "status": "placed",
+      "createdAt": "2026-09-08T05:37:37.729Z",
+      "id": "Dtvkz4xpxyY"
+    },
     {
       "userId": "aydKhSzM8LY",
       "items": [
@@ -49,9 +103,39 @@
       ],
       "totalAmount": 1299,
       "status": "placed",
-      "createdAt": "2026-08-31T16:31:26.715Z",
-      "id": "u9pHKOBunic"
+      "createdAt": "2026-09-09T08:26:52.500Z",
+      "id": "kRLZjSfaJT8"
+    },
+    {
+      "userId": "aydKhSzM8LY",
+      "items": [
+        {
+          "id": "2",
+          "title": "Classic Blue Hoodie",
+          "price": 1299,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 1299,
+      "status": "placed",
+      "createdAt": "2026-09-10T04:37:32.762Z",
+      "id": "FnsLkZs7w8o"
+    },
+    {
+      "userId": "aydKhSzM8LY",
+      "items": [
+        {
+          "id": "3",
+          "title": "Classic Straight Fit Jeans",
+          "price": 1599,
+          "quantity": 1,
+          "size": "30"
+        }
+      ],
+      "totalAmount": 1599,
+      "status": "placed",
+      "createdAt": "2026-09-10T08:40:35.543Z",
+      "id": "jKqZVUVMvRQ"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

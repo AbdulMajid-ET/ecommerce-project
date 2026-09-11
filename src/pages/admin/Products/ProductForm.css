@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   PAGE
+========================= */
+
+.admin-product-form-page {
+  width: 100%;
+  min-height: calc(100vh - 112px);
+
+  background-color: #ffffff;
+
+  box-sizing: border-box;
+
+  padding-top: 38px;
+  padding-bottom: 100px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-product-form-header {
+  width: 100%;
+  max-width: 625px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+
+.admin-product-form-title {
+  margin: 0;
+
+  color: #111111;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+}
+
+
+.admin-product-form-subtitle {
+  margin: 8px 0 0;
+
+  color: #555555;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.admin-product-form {
+  width: 100%;
+  max-width: 625px;
+
+  margin: 116px auto 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.admin-form-group {
+  position: relative;
+
+  margin-bottom: 16px;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.admin-form-group label {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 2;
+
+  height: 42px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color: #111111;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 0.75rem;
+
+  letter-spacing: 0.7px;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.admin-form-group input,
+.admin-form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #999999;
+
+  border-radius: 0;
+
+  background-color: #ffffff;
+
+  color: #111111;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 0.8rem;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+}
+
+
+.admin-form-group input {
+  height: 42px;
+
+  padding: 0 16px 0 125px;
+}
+
+
+.admin-form-group textarea {
+  height: 88px;
+
+  padding: 14px 16px 14px 125px;
+
+  resize: vertical;
+}
+
+
+/* =========================
+   FOCUS
+========================= */
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus {
+  border-color: #111111;
+}
+
+
+/* =========================
+   TWO COLUMN
+========================= */
+
+.admin-form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.admin-product-form-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 10px;
+
+  margin-top: 32px;
+}
+
+
+/* =========================
+   CANCEL
+========================= */
+
+.admin-form-cancel-btn {
+  height: 42px;
+
+  padding: 0 22px;
+
+  background-color: #ffffff;
+
+  color: #111111;
+
+  border: 1px solid #111111;
+
+  border-radius: 0;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 0.8rem;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.admin-form-cancel-btn:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+.admin-form-submit-btn {
+  height: 42px;
+
+  padding: 0 22px;
+
+  background-color: #111111;
+
+  color: #ffffff;
+
+  border: 1px solid #111111;
+
+  border-radius: 0;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 0.8rem;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.admin-form-submit-btn:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+  .admin-product-form-page {
+    padding: 35px 20px 70px;
+  }
+
+
+  .admin-product-form-header {
+    max-width: 100%;
+  }
+
+
+  .admin-product-form {
+    max-width: 100%;
+
+    margin-top: 70px;
+  }
+
+
+  .admin-product-form-title {
+    font-size: 2.7rem;
+  }
+
+
+  .admin-form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .admin-product-form-page {
+    padding: 30px 16px 60px;
+  }
+
+
+  .admin-product-form {
+    margin-top: 55px;
+  }
+
+
+  .admin-product-form-title {
+    font-size: 2.35rem;
+  }
+
+
+  .admin-product-form-subtitle {
+    font-size: 0.65rem;
+  }
+
+
+  .admin-form-group input {
+    padding-left: 110px;
+  }
+
+
+  .admin-form-group textarea {
+    padding-left: 110px;
+  }
+
+
+  .admin-product-form-actions {
+    flex-wrap: wrap;
+  }
+
+}

@@ -2,10 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { persistReducer, persistStore } from "redux-persist"
 
 import authReducer from "./slices/authSlice"
+import adminAuthReducer from "./slices/adminAuthSlice"
+
 import productReducer from "./slices/productSlice"
 import cartReducer from "./slices/cartSlice"
 import wishlistReducer from "./slices/wishlistSlice"
 import orderReducer from "./slices/orderSlice"
+import userReducer from "./slices/userSlice"
 
 const storage = {
   getItem: (key) => {
@@ -26,12 +29,14 @@ const storage = {
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "cart", "wishlist", "orders"],
+  whitelist: ["auth", "adminAuth", "cart", "wishlist", "orders"],
 }
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  adminAuth: adminAuthReducer,
   products: productReducer,
+  users: userReducer,
   cart: cartReducer,
   wishlist: wishlistReducer,
   orders: orderReducer,

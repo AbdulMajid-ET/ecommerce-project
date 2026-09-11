@@ -36,7 +36,7 @@ function Orders() {
       </div>
     )
   }
-
+// Empty orders
   if (orders.length === 0) {
     return (
       <div className="orders-page center-state">

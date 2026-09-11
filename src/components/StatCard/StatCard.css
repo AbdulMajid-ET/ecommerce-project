@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+.admin-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.admin-stat-card:hover {
+  border-color: #000000;
+}
+
+.admin-stat-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666666;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.admin-stat-value {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  color: #000000;
+  margin: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .admin-stat-card {
+    padding: 1.5rem;
+  }
+
+  .admin-stat-value {
+    font-size: 2.5rem;
+  }
+}

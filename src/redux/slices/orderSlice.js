@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import {
   createOrder,
   getOrders,
+  getAllOrders,
+  getOrderById,
 } from "../../services/orderService"
 
 export const placeOrder = createAsyncThunk(
@@ -31,10 +33,36 @@ export const fetchOrders = createAsyncThunk(
   }
 )
 
+export const fetchAllOrders = createAsyncThunk(
+  "orders/fetchAllOrders",
+  async (_, thunkAPI) => {
+    try {
+      const response = await getAllOrders()
+
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const fetchOrderById = createAsyncThunk(
+  "orders/fetchOrderById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await getOrderById(id)
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
 const initialState = {
   orders: [],
   loading: false,
   error: null,
+  selectedOrder: null
 }
 
 const orderSlice = createSlice({
@@ -74,6 +102,36 @@ const orderSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
+
+      .addCase(fetchAllOrders.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+
+      .addCase(fetchAllOrders.fulfilled, (state, action) => {
+        state.loading = false
+        state.orders = action.payload
+      })
+
+      .addCase(fetchAllOrders.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+
+      .addCase(fetchOrderById.pending, (state) => {
+        state.loading = true
+        state.error = null
+        state.selectedOrder = null
+      })
+      .addCase(fetchOrderById.fulfilled, (state, action) => {
+        state.loading = false
+        state.selectedOrder = action.payload
+      })
+      .addCase(fetchOrderById.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+
   },
 })
 

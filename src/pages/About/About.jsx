@@ -18,7 +18,7 @@ function About() {
             At <strong>FIND YOUR STYLE</strong>, we believe fashion is more than
             just clothing—it is a direct reflection of your identity, mindset,
             and values. Founded in <strong>2026</strong> in{" "}
-            <strong>Kerala</strong> by <strong>Abdul Majid</strong>, our mission
+            <strong>Kerala</strong> by <strong>CEO Abdul Majid and Ramees U</strong>, our mission
             is to empower individuals to express their true selves through a
             curated collection of modern, high-quality apparel.
           </p>

@@ -17,8 +17,9 @@
 }
 
 .wishlist-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
   font-size: 2.25rem;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 1px;
   margin: 0;
   color: #000;
@@ -167,6 +168,8 @@
 }
 
 /* Empty State */
+/* Empty State */
+
 .empty-wishlist-container {
   text-align: center;
   padding: 5rem 1rem;
@@ -175,6 +178,27 @@
 .empty-message {
   margin: 1.5rem 0;
   color: #666;
+}
+
+.empty-wishlist-shopping-btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.empty-wishlist-shopping-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* Responsive View */

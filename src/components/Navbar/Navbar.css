@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@500;600;700&display=swap');
 
-/* Main Wrapper */
+/* Main Sticky Wrapper */
 .header-wrapper {
   width: 100%;
   border-bottom: 1px solid #eaeaea;
@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 
-/* Announcement Top Bar */
+/* Top Black Announcement Bar */
 .announcement-bar {
   width: 100%;
   background-color: #000000;
@@ -18,35 +18,37 @@
   text-align: center;
   padding: 6px 0;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 1.5px;
 }
 
-/* Navbar Frame */
+/* Header Outer Wrapper */
 .navbar {
   width: 100%;
-  padding: 1rem 2rem;
-  box-sizing: border-box;
+  background-color: #ffffff;
 }
 
+/* Centered Header Content Container */
 .navbar-container {
-  max-width: 1400px;
+  max-width: 1250px;
   margin: 0 auto;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 /* Left Grouping: Logo + Links */
 .nav-left-group {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .navbar-logo {
   font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   letter-spacing: 1px;
   color: #000000;
   text-decoration: none;
@@ -55,14 +57,14 @@
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.8rem;
   align-items: center;
 }
 
 .nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 1px;
   color: #000000;
   text-decoration: none;
@@ -73,11 +75,11 @@
   opacity: 0.6;
 }
 
-/* Right Actions (Wishlist, Cart, Buttons) */
+/* Right Side Actions */
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .icon-link {
@@ -86,60 +88,31 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  position: relative;
-  transition: opacity 0.2s ease;
   padding: 4px;
+  transition: opacity 0.2s ease;
 }
 
 .icon-link:hover {
   opacity: 0.6;
 }
 
-/* Base Badge Style */
-.cart-badge {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-
-/* Overlapping Badge Style for Cart Bag */
-.cart-badge.overlapping-badge {
-  top: auto;
-  bottom: -2px;
-  right: -5px;
-  width: 17px;
-  height: 17px;
-  font-size: 0.65rem;
-  box-shadow: 0 0 0 1.5px #ffffff;
-}
-
-/* User Menu & Buttons */
+/* LOGOUT BUTTON STYLES */
 .auth-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .logout-button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   background-color: #000000;
   color: #ffffff;
   border: 1px solid #000000;
-  padding: 0.55rem 1.25rem;
+  padding: 0.4rem 1rem;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
 }

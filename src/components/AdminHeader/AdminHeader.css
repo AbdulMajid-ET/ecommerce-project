@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   ANNOUNCEMENT BAR
+========================= */
+
+.admin-announcement-bar {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #000000;
+  color: #ffffff;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.admin-navbar {
+  width: 100%;
+  height: 76px;
+
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   NAVBAR CONTAINER
+========================= */
+
+.admin-navbar-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.admin-navbar-logo {
+  color: #111111;
+  text-decoration: none;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.admin-navbar-links {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+
+  margin-left: 70px;
+}
+
+
+.admin-nav-link {
+  position: relative;
+
+  color: #111111;
+  text-decoration: none;
+
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.7px;
+
+  padding: 8px 0;
+
+  transition: opacity 0.2s ease;
+}
+
+
+.admin-nav-link:hover {
+  opacity: 0.55;
+}
+
+
+/* Active underline */
+
+.admin-nav-link.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 2px;
+
+  height: 2px;
+
+  background-color: #000000;
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.admin-navbar-actions {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.admin-logout-button {
+  border: 1px solid #000000;
+
+  background-color: #000000;
+  color: #ffffff;
+
+  padding: 9px 18px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.admin-logout-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .admin-navbar-container {
+    padding: 0 18px;
+  }
+
+  .admin-navbar-links {
+    margin-left: 35px;
+    gap: 20px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .admin-navbar {
+    height: auto;
+  }
+
+  .admin-navbar-container {
+    min-height: 70px;
+
+    flex-wrap: wrap;
+
+    padding: 14px 16px;
+  }
+
+  .admin-navbar-logo {
+    font-size: 1.6rem;
+  }
+
+  .admin-navbar-links {
+    order: 3;
+
+    width: 100%;
+
+    margin-left: 0;
+    margin-top: 14px;
+
+    padding-bottom: 4px;
+
+    justify-content: center;
+
+    gap: 22px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .admin-announcement-bar {
+    font-size: 0.65rem;
+  }
+
+  .admin-navbar-logo {
+    font-size: 1.45rem;
+  }
+
+  .admin-navbar-links {
+    gap: 14px;
+  }
+
+  .admin-nav-link {
+    font-size: 0.72rem;
+  }
+
+  .admin-logout-button {
+    padding: 8px 12px;
+    font-size: 0.6rem;
+  }
+
+}

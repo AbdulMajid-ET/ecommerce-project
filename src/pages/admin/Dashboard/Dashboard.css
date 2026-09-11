@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+.admin-dashboard {
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.admin-dashboard-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1.5px;
+  color: #000000;
+  margin: 0 0 0.25rem 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.admin-dashboard-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #666666;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.admin-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.admin-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.admin-stat-card:hover {
+  border-color: #000000;
+}
+
+.admin-stat-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666666;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.admin-stat-value {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  color: #000000;
+  margin: 0;
+  line-height: 1;
+}
+
+.admin-dashboard-message {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666666;
+}
+
+.admin-dashboard-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d00000;
+}
+
+@media (max-width: 768px) {
+  .admin-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard-title {
+    font-size: 2.5rem;
+  }
+
+  .admin-stat-card {
+    padding: 1.5rem;
+  }
+}

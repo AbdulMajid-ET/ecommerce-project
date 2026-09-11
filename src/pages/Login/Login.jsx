@@ -46,7 +46,19 @@ function Login() {
 
       const user = users[0]
 
-      dispatch(login(user))
+      if (user.isBlocked) {
+        setError("Your account has been blocked.")
+        return
+      }
+
+      const safeUser = {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+      }
+
+      dispatch(login(safeUser))
       navigate("/")
     } catch (error) {
       console.error(error)
