@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 import { fetchAllOrders } from "../../../redux/slices/orderSlice"
+import { fetchUsers } from "../../../redux/slices/userSlice"
 
 import "./Orders.css"
 
@@ -15,9 +16,22 @@ function AdminOrders() {
     (state) => state.orders
   )
 
+  const { users } = useSelector(
+    (state) => state.users
+  )
+
   useEffect(() => {
     dispatch(fetchAllOrders())
+    dispatch(fetchUsers())
   }, [dispatch])
+
+  const getUserName = (userId) => {
+    const user = users.find(
+      (user) => user.id === userId
+    )
+
+    return user ? user.fullName : "Unknown User"
+  }
 
   if (loading) {
     return (
@@ -58,7 +72,7 @@ function AdminOrders() {
           <thead>
             <tr>
               <th>ORDER ID</th>
-              <th>USER ID</th>
+              <th>USER</th>
               <th>TOTAL</th>
               <th>STATUS</th>
               <th>ACTION</th>
@@ -78,7 +92,7 @@ function AdminOrders() {
                   </td>
 
                   <td>
-                    {order.userId}
+                    {getUserName(order.userId)}
                   </td>
 
                   <td className="admin-order-total">

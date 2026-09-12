@@ -167,7 +167,6 @@ function SearchBar() {
           </div>
         </>
       )}
-
     </div>
   )
 }

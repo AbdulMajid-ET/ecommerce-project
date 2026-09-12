@@ -1,4 +1,5 @@
 import { useState } from "react"
+
 import { Link, useNavigate } from "react-router-dom"
 
 import { getUsers, registerUser } from "../../services/userService"
@@ -69,6 +70,7 @@ function Register() {
         fullName: formData.fullName.trim(),
         email,
         password,
+        role: "user",
       })
 
       alert("Registration successful")

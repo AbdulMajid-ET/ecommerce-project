@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 
 import { fetchOrderById } from "../../../redux/slices/orderSlice"
+import { fetchUsers } from "../../../redux/slices/userSlice"
 
 import "./OrderDetails.css"
 
@@ -14,9 +15,22 @@ function OrderDetails() {
     (state) => state.orders
   )
 
+  const { users } = useSelector(
+    (state) => state.users
+  )
+
   useEffect(() => {
     dispatch(fetchOrderById(id))
+    dispatch(fetchUsers())
   }, [dispatch, id])
+
+  const getUserName = (userId) => {
+    const user = users.find(
+      (user) => user.id === userId
+    )
+
+    return user ? user.fullName : "Unknown User"
+  }
 
   if (loading) {
     return (
@@ -84,11 +98,11 @@ function OrderDetails() {
 
         <div className="admin-order-info-item">
           <span className="admin-order-info-label">
-            USER ID
+            USER
           </span>
 
           <span className="admin-order-info-value">
-            {selectedOrder.userId}
+            {getUserName(selectedOrder.userId)}
           </span>
         </div>
 

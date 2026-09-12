@@ -51,6 +51,7 @@ export const fetchOrderById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await getOrderById(id)
+
       return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -62,7 +63,7 @@ const initialState = {
   orders: [],
   loading: false,
   error: null,
-  selectedOrder: null
+  selectedOrder: null,
 }
 
 const orderSlice = createSlice({
@@ -73,6 +74,9 @@ const orderSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
+
+      // PLACE ORDER
+
       .addCase(placeOrder.pending, (state) => {
         state.loading = true
         state.error = null
@@ -87,6 +91,8 @@ const orderSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
+
+      // FETCH USER ORDERS
 
       .addCase(fetchOrders.pending, (state) => {
         state.loading = true
@@ -103,6 +109,8 @@ const orderSlice = createSlice({
         state.error = action.payload
       })
 
+      // FETCH ALL ORDERS
+
       .addCase(fetchAllOrders.pending, (state) => {
         state.loading = true
         state.error = null
@@ -118,20 +126,23 @@ const orderSlice = createSlice({
         state.error = action.payload
       })
 
+      // FETCH SINGLE ORDER
+
       .addCase(fetchOrderById.pending, (state) => {
         state.loading = true
         state.error = null
         state.selectedOrder = null
       })
+
       .addCase(fetchOrderById.fulfilled, (state, action) => {
         state.loading = false
         state.selectedOrder = action.payload
       })
+
       .addCase(fetchOrderById.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload
       })
-
   },
 })
 
