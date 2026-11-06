@@ -1,163 +1,600 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   CHECKOUT PAGE
+========================================= */
 
 .checkout-page {
-  min-height: calc(100vh - 120px);
-  background-color: #ffffff;
-  padding: 3rem 1.5rem;
-  display: flex;
-  justify-content: center;
+  min-height: 100vh;
+  background: #ffffff;
 }
 
-.checkout-container {
+/* =========================================
+   HEADER
+========================================= */
+
+.checkout-header {
+  height: 60px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #ffffff;
+}
+
+.checkout-header-inner {
   width: 100%;
-  max-width: 650px;
-}
-
-.checkout-title {
-  font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 3rem;
-  letter-spacing: 1.5px;
-  color: #000000;
-  margin: 0 0 2rem 0;
-  text-transform: uppercase;
-}
-
-/* Summary Card */
-.summary-card {
-  border: 1px solid #e5e5e5;
-  padding: 2rem;
-  background-color: #ffffff;
-}
-
-.summary-title {
-  font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-  color: #000000;
-  margin: 0 0 1.5rem 0;
-  border-bottom: 2px solid #000000;
-  padding-bottom: 0.5rem;
-}
-
-/* Item Rows */
-.items-list {
+  max-width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.summary-item {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.item-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.item-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #000000;
-}
-
-.item-qty {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: #666666;
-}
-
-.item-subtotal {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #000000;
-}
-
-.summary-divider {
-  height: 1px;
-  background-color: #eaeaea;
-  margin: 1.5rem 0;
-}
-
-/* Total Row */
-.total-row {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  color: #000000;
-  margin-bottom: 1.5rem;
 }
 
-/* Button & Statuses */
-.place-order-btn {
-  width: 100%;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background-color: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
-  padding: 1rem;
+.checkout-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  text-decoration: none;
+}
+
+.checkout-bag {
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.place-order-btn:hover:not(:disabled) {
-  background-color: #ffffff;
-  color: #000000;
+/* =========================================
+   MAIN CHECKOUT LAYOUT (FULL BLEED)
+========================================= */
+
+.checkout-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  min-height: calc(100vh - 60px);
 }
 
-.place-order-btn:disabled {
-  background-color: #999999;
-  border-color: #999999;
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.checkout-left {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto; /* Keeps left content aligned nicely towards center */
+  padding: 32px 40px 60px 24px;
+  background: #ffffff;
+}
+
+.checkout-section {
+  margin-bottom: 24px;
+}
+
+.checkout-section h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+}
+
+/* =========================================
+   FORM INPUTS & CONTAINERS
+========================================= */
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.checkout-left input[type="text"],
+.checkout-left input[type="email"],
+.checkout-left input[type="tel"] {
+  width: 100%;
+  height: 46px;
+  margin: 0 0 9px;
+  padding: 0 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #111111;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.checkout-left input::placeholder {
+  color: #707070;
+}
+
+.checkout-left input:focus {
+  border-color: #000000;
+}
+
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #707070;
+  color: #707070;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.input-icon.search-icon {
+  border: none;
+  font-size: 14px;
+}
+
+/* =========================================
+   FORM ROWS & DROPDOWNS
+========================================= */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.form-row.three {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+}
+
+.country-field {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin-bottom: 9px;
+  padding: 5px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.country-field span:first-child {
+  font-size: 10px;
+  color: #707070;
+  line-height: 1;
+}
+
+.country-field strong {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111111;
+  line-height: 1.2;
+}
+
+.country-field .arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  color: #707070;
+  pointer-events: none;
+}
+
+/* State Select Container */
+.state-select-field select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111111;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 2px;
+}
+
+/* =========================================
+   SAVE INFO CHECKBOX
+========================================= */
+
+.save-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #111111;
+  cursor: pointer;
+}
+
+.save-info input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  accent-color: #000000;
+  border-radius: 4px;
+}
+
+/* =========================================
+   SHIPPING BOX
+========================================= */
+
+.shipping-box {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  text-align: center;
+  font-size: 12px;
+  color: #555555;
+}
+
+/* =========================================
+   PAYMENT BOX
+========================================= */
+
+.payment-subtitle {
+  margin: -4px 0 12px;
+  font-size: 12px;
+  color: #707070;
+}
+
+.payment-box {
+  width: 100%;
+  border: 1px solid #1677ff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.payment-header {
+  padding: 14px 16px;
+  background: #f3f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #111111;
+}
+
+.payment-badges {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge {
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
+}
+
+.badge.upi { color: #008080; }
+.badge.visa { color: #1a1f71; }
+.badge.mc { color: #eb001b; }
+.badge.count {
+  background: #eef5ff;
+  color: #0066cc;
+  border: none;
+}
+
+.payment-description {
+  padding: 16px;
+  background: #f9f9f9;
+  border-top: 1px solid #e6e6e6;
+  text-align: center;
+  font-size: 12px;
+  color: #333333;
+}
+
+/* Radio circle */
+.radio {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #a5a5a5;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.radio.active {
+  border: 5px solid #1677ff;
+  background: #ffffff;
+}
+
+/* =========================================
+   BILLING BOX
+========================================= */
+
+.billing-box {
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.billing-option {
+  min-height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #d9d9d9;
+  transition: background 0.15s ease;
+}
+
+.billing-option:last-of-type {
+  border-bottom: none;
+}
+
+.billing-option.selected {
+  background: #f3f7ff;
+}
+
+.billing-option.selected + .nested-billing-form {
+  border-top: 1px solid #d9d9d9;
+}
+
+.nested-billing-form {
+  padding: 16px;
+  background: #f9f9f9;
+}
+
+/* =========================================
+   PAY BUTTON
+========================================= */
+
+.pay-btn {
+  width: 100%;
+  height: 48px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #0066cc;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background: #0052a3;
+}
+
+.pay-btn:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-.error-message {
-  font-family: 'Inter', sans-serif;
-  color: #d9534f;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
+/* =========================================
+   RIGHT SIDE (SUMMARY - FULL BLEED BACKGROUND)
+========================================= */
+
+.checkout-right {
+  width: 100%;
+  background: #fafafa; /* Cream/Off-white full bleed background */
+  border-left: 1px solid #e6e6e6;
+  padding: 32px 24px 60px 40px;
+}
+
+.order-summary {
+  width: 100%;
+  max-width: 440px; /* Constrains summary contents */
+}
+
+.summary-product {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-image-wrapper {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.quantity-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
   font-weight: 600;
 }
 
-/* Empty State */
-.empty-checkout {
-  text-align: center;
+.product-info strong {
+  font-size: 12px;
+  font-weight: 500;
+  display: block;
+  color: #111111;
+}
+
+.product-info span {
+  font-size: 11px;
+  color: #707070;
+}
+
+.product-price {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #111111;
+}
+
+.shipping-text {
+  color: #707070;
+}
+
+.summary-total {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.summary-total > strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.summary-total div {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.summary-total small {
+  font-size: 10px;
+  color: #707070;
+}
+
+.summary-total div strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================================
+   ERROR & EMPTY
+========================================= */
+
+/* =========================================
+   CHECKOUT EMPTY STATE
+========================================= */
+
+.checkout-empty {
+  min-height: 80vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px 20px;
 }
 
-.empty-msg {
-  font-family: 'Inter', sans-serif;
+.checkout-empty h1 {
+  margin: 0 0 28px 0;
+  font-family: 'Bebas Neue', 'Oswald', 'Impact', sans-serif, system-ui;
+  font-size: 38px;
   font-weight: 700;
-  color: #666666;
-  margin-bottom: 1.5rem;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  color: #000000;
+  text-transform: uppercase;
 }
 
-.continue-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+.checkout-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
   background-color: #000000;
   color: #ffffff;
+  font-family: 'Bebas Neue', 'Oswald', 'Impact', sans-serif, system-ui;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  transition: background-color 0.2s ease;
+  border: 1px solid #000000;
+  border-radius: 0; /* Square button corners like the screenshot */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.continue-btn:hover {
-  background-color: #333333;
+/* Hover Effect: Turns white with black text and black border */
+.checkout-empty-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 850px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  .checkout-left {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 24px 20px 40px;
+  }
+  .checkout-right {
+    padding: 24px 20px 40px;
+    border-left: none;
+    border-top: 1px solid #e6e6e6;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-row,
+  .form-row.three {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }

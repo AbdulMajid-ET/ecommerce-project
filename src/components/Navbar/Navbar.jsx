@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import {
+  Link,
+  useLocation,
+  useNavigate
+} from "react-router-dom"
 
 import { logout } from "../../redux/slices/authSlice"
 import { clearCart } from "../../redux/slices/cartSlice"
@@ -11,6 +15,11 @@ import "./Navbar.css"
 function Navbar() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
+
+  // Check if the current page is checkout
+  const isCheckoutPage =
+    location.pathname === "/checkout"
 
   const { isAuthenticated } = useSelector(
     (state) => state.auth
@@ -25,11 +34,13 @@ function Navbar() {
   )
 
   const cartCount = items.reduce(
-    (total, product) => total + product.quantity,
+    (total, product) =>
+      total + product.quantity,
     0
   )
 
-  const isWishlistActive = wishlistItems.length > 0
+  const isWishlistActive =
+    wishlistItems.length > 0
 
   const handleLogout = () => {
     dispatch(clearCart())
@@ -39,13 +50,29 @@ function Navbar() {
 
   return (
     <header className="header-wrapper">
+
+      {/* ANNOUNCEMENT BAR */}
+
       <div className="announcement-bar">
-        <span>WEAR WHAT YOU FEEL LIKE YOU</span>
+        <span>
+          WEAR WHAT YOU FEEL LIKE YOU
+        </span>
       </div>
 
+
+      {/* NAVBAR */}
+
       <nav className="navbar">
+
         <div className="navbar-container">
+
+
+          {/* LEFT SIDE */}
+
           <div className="nav-left-group">
+
+            {/* LOGO */}
+
             <Link
               to="/"
               className="navbar-logo"
@@ -53,74 +80,102 @@ function Navbar() {
               FIND YOUR STYLE
             </Link>
 
-            <div className="navbar-links">
-              <Link
-                to="/"
-                className="nav-link"
-              >
-                HOME
-              </Link>
 
-              <Link
-                to="/products"
-                className="nav-link"
-              >
-                CATALOG
-              </Link>
+            {/* NORMAL NAV LINKS */}
 
-              <Link
-                to="/about"
-                className="nav-link"
-              >
-                ABOUT
-              </Link>
-            </div>
+            {!isCheckoutPage && (
+              <div className="navbar-links">
+
+                <Link
+                  to="/"
+                  className="nav-link"
+                >
+                  HOME
+                </Link>
+
+                <Link
+                  to="/products"
+                  className="nav-link"
+                >
+                  CATALOG
+                </Link>
+
+                <Link
+                  to="/about"
+                  className="nav-link"
+                >
+                  ABOUT
+                </Link>
+
+              </div>
+            )}
+
           </div>
+
+
+          {/* RIGHT SIDE */}
 
           <div className="navbar-actions">
 
-            {/* Search */}
-            <SearchBar />
 
-            {/* Wishlist */}
-            <Link
-              to="/wishlist"
-              className={`icon-link wishlist-icon-link ${isWishlistActive
-                  ? "navbar-wishlist-active"
-                  : ""
-                }`}
-              aria-label="Wishlist"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill={
+            {/* SEARCH */}
+
+            {!isCheckoutPage && (
+              <SearchBar />
+            )}
+
+
+            {/* WISHLIST */}
+
+            {!isCheckoutPage && (
+              <Link
+                to="/wishlist"
+                className={`icon-link wishlist-icon-link ${
                   isWishlistActive
-                    ? "currentColor"
-                    : "none"
-                }
-                stroke="currentColor"
-                strokeWidth="1.75"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                    ? "navbar-wishlist-active"
+                    : ""
+                }`}
+                aria-label="Wishlist"
               >
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
 
-              {wishlistItems.length > 0 && (
-                <span className="cart-badge">
-                  {wishlistItems.length}
-                </span>
-              )}
-            </Link>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill={
+                    isWishlistActive
+                      ? "currentColor"
+                      : "none"
+                  }
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
 
-            {/* Cart */}
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+
+                </svg>
+
+
+                {wishlistItems.length > 0 && (
+                  <span className="cart-badge">
+                    {wishlistItems.length}
+                  </span>
+                )}
+
+              </Link>
+            )}
+
+
+            {/* CART */}
+
             <Link
               to="/cart"
               className="icon-link cart-icon-link"
               aria-label="Cart"
             >
+
               <svg
                 width="22"
                 height="22"
@@ -131,49 +186,71 @@ function Navbar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
+
                 <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
 
                 <path d="M5 8h14l-1.2 12H6.2L5 8z" />
+
               </svg>
+
 
               {cartCount > 0 && (
                 <span className="cart-badge overlapping-badge">
                   {cartCount}
                 </span>
               )}
+
             </Link>
 
-            {/* Authentication */}
-            {isAuthenticated ? (
-              <div className="user-menu">
-                <button
-                  type="button"
-                  className="logout-button"
-                  onClick={handleLogout}
-                >
-                  LOGOUT
-                </button>
-              </div>
-            ) : (
-              <div className="auth-links">
-                <Link
-                  to="/login"
-                  className="nav-link"
-                >
-                  LOGIN
-                </Link>
 
-                <Link
-                  to="/register"
-                  className="nav-link"
-                >
-                  REGISTER
-                </Link>
-              </div>
+            {/* AUTHENTICATION */}
+
+            {!isCheckoutPage && (
+              <>
+                {isAuthenticated ? (
+
+                  <div className="user-menu">
+
+                    <button
+                      type="button"
+                      className="logout-button"
+                      onClick={handleLogout}
+                    >
+                      LOGOUT
+                    </button>
+
+                  </div>
+
+                ) : (
+
+                  <div className="auth-links">
+
+                    <Link
+                      to="/login"
+                      className="nav-link"
+                    >
+                      LOGIN
+                    </Link>
+
+                    <Link
+                      to="/register"
+                      className="nav-link"
+                    >
+                      REGISTER
+                    </Link>
+
+                  </div>
+
+                )}
+              </>
             )}
+
           </div>
+
         </div>
+
       </nav>
+
     </header>
   )
 }

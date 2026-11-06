@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./About.css"
 
+// Display the brand story, company values, and a link to explore the product collection.
 function About() {
   return (
     <div className="about-page">

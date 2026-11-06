@@ -4,7 +4,7 @@
       "title": "Baggy Denim Jeans",
       "price": 1499,
       "category": "Jeans",
-      "stock": 4,
+      "stock": 3,
       "thumbnail": "https://baggyclothing.us/cdn/shop/files/BAGGYDENIM01-1901.png?v=1760090394&width=1600",
       "description": "Relaxed fit denim jeans with a modern baggy style",
       "id": "1"
@@ -15,7 +15,7 @@
       "price": 1299,
       "category": "Hoodies",
       "thumbnail": "https://colorfulstandard.com/cdn/shop/files/CS1015_Organic-Oversized-Hood_Marine-Blue_Male_6.heic?v=1758724162&width=4000",
-      "stock": 11,
+      "stock": 6,
       "description": "A comfortable classic black hoodie with a relaxed fit, perfect for everyday wear."
     },
     {
@@ -53,6 +53,15 @@
       "thumbnail": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55",
       "description": "Oversized Jersey",
       "id": "5M9MKvD6SjU"
+    },
+    {
+      "title": "Air force",
+      "price": 2999,
+      "category": "shoes",
+      "stock": 3,
+      "thumbnail": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fc4622c4-2769-4665-aa6e-42c974a7705e/AIR+FORCE+1+%2707.png",
+      "description": "Best shoes to wear",
+      "id": "tbapdXetHzU"
     }
   ],
   "users": [
@@ -128,7 +137,59 @@
       "status": "placed",
       "createdAt": "2026-09-12T01:40:32.654Z",
       "id": "9OXrlLCxZZs"
+    },
+    {
+      "userId": "R6198295NE0",
+      "email": "majidxxmajjixx@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "title": "Classic Blue Hoodie",
+          "price": 1299,
+          "quantity": 4,
+          "size": "30"
+        },
+        {
+          "id": "1",
+          "title": "Baggy Denim Jeans",
+          "price": 1499,
+          "quantity": 1,
+          "size": "30"
+        },
+        {
+          "id": "2",
+          "title": "Classic Blue Hoodie",
+          "price": 1299,
+          "quantity": 1,
+          "size": "32"
+        }
+      ],
+      "totalAmount": 7994,
+      "status": "placed",
+      "createdAt": "2026-09-14T09:13:19.717Z",
+      "shippingAddress": {
+        "firstName": "Abdul Majid",
+        "lastName": "Majidxx",
+        "address": "Kerala, Malappuram",
+        "apartment": "Aston Villa",
+        "city": "Manjeri",
+        "state": "Kerala",
+        "pincode": "676122",
+        "phone": "8891687040",
+        "fullName": "Abdul Majid Majidxx"
+      },
+      "billingAddress": {
+        "firstName": "Abdul Majid",
+        "lastName": "Majidxx",
+        "address": "Kerala, Malappuram",
+        "apartment": "Aston Villa",
+        "city": "Manjeri",
+        "state": "Kerala",
+        "pincode": "676122",
+        "phone": "8891687040",
+        "fullName": "Abdul Majid Majidxx"
+      },
+      "id": "4FvghyZ6xnQ"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
