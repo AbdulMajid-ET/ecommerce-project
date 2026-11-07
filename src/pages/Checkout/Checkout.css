@@ -22,40 +22,6 @@ body {
 }
 
 /* =========================================
-   HEADER
-========================================= */
-
-.checkout-header {
-  height: 60px;
-  border-bottom: 1px solid #e6e6e6;
-  background: #ffffff;
-}
-
-.checkout-header-inner {
-  width: 100%;
-  max-width: 1100px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.checkout-logo {
-  font-size: 18px;
-  font-weight: 600;
-  color: #111111;
-  text-decoration: none;
-}
-
-.checkout-bag {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-/* =========================================
    MAIN CHECKOUT LAYOUT (FULL BLEED)
 ========================================= */
 
@@ -63,7 +29,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 55% 45%;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
 }
 
 /* =========================================
